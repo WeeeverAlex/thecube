@@ -1,4 +1,4 @@
-# APS3_ALGLIN
+# APS4_ALGLIN
 
 Esse é um projeto da matéria de Algebra Linear e Teoria da Informação do Insper para o curso de Ciência da Computação
 
