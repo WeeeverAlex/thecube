@@ -49,6 +49,9 @@ Tz = np.array([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, d], [0, 0, 0, 1]])
 # Matriz de translação para o centro da tela
 Tc = np.array([[1, 0, 0, 400], [0, 1, 0, 300], [0, 0, 1, 0], [0, 0, 0, 1]])
 
+# Rotação do cubo em torno de todos os eixos
+rotacao_direcao = "r"  # Pode ser "x", "y" ou "z"
+
 
 # Loop principal
 main = True
@@ -58,19 +61,37 @@ while main:
             main = False
         # resetar o cubo
         if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_x:
+                rotacao_direcao = "x"
+            if event.key == pygame.K_y:
+                rotacao_direcao = "y"
+            if event.key == pygame.K_z:
+                rotacao_direcao = "z"
             if event.key == pygame.K_r:
-                r = x @ y @ z
-
-
-
+                rotacao_direcao = "r"
 
 # Diminuindo a velocidade das transformações
     pygame.time.delay(20)
 
     # Rotação do cubo atualizada a cada loop
-    r = r @ x @ z @ y
 
-    # Matriz de transformação total do cub
+    # rotacao_direcao = "x"
+    if rotacao_direcao == "x":
+        r = r @ x
+
+    # rotacao_direcao = "y"
+    elif rotacao_direcao == "y":
+        r = r @ y
+
+    # rotacao_direcao = "z"
+    elif rotacao_direcao == "z":
+        r = r @ z
+
+    # rotacao_direcao = "r"
+    elif rotacao_direcao == "r":
+        r = r @ x @ z @ y
+
+    # Matriz de transformação total do cubo
     M = Tc @ pinhole  @ Tz @ r
 
     # Cubo com as transformações aplicadas
@@ -79,17 +100,55 @@ while main:
     # Se voce clicar com a tecla "w" o cubo vai se afastar da camera
     if pygame.key.get_pressed()[pygame.K_w]:
         d -= 10
-        Tz = np.array([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, d], [0, 0, 0, 1]])
-        M = Tc @ pinhole  @ Tz @ r
+
+        # Se clicar tecla "x"o cubo vai rotacionar em torno do eixo x
+        if rotacao_direcao == "x":
+            Tz = np.array([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, d], [0, 0, 0, 1]])
+            M = Tc @ pinhole @ Tz @ r @ x
+        
+        # Se clicar tecla "y"o cubo vai rotacionar em torno do eixo y
+        elif rotacao_direcao == "y":
+            Tz = np.array([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, d], [0, 0, 0, 1]])
+            M = Tc @ pinhole @ Tz @ r @ y
+        
+        # Se clicar tecla "z"o cubo vai rotacionar em torno do eixo z
+        elif rotacao_direcao == "z":
+            Tz = np.array([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, d], [0, 0, 0, 1]])
+            M = Tc @ pinhole @ Tz @ r @ z
+
+        # Se clicar tecla "r"o cubo vai rotacionar em torno de todos os eixos
+        elif rotacao_direcao == "r":
+            Tz = np.array([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, d], [0, 0, 0, 1]])
+            M = Tc @ pinhole  @ Tz @ r
+
         cubo_final = M @ cubo
 
     # Se voce clicar com a tecla "s" o cubo vai se aproximar da camera
     if pygame.key.get_pressed()[pygame.K_s]:
         d += 10
-        Tz = np.array([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, d], [0, 0, 0, 1]])
-        M = Tc @ pinhole @ Tz @ r
+
+        # Se clicar tecla "x"o cubo vai rotacionar em torno do eixo x
+        if rotacao_direcao == "x":
+            Tz = np.array([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, d], [0, 0, 0, 1]])
+            M = Tc @ pinhole @ Tz @ r @ x
+        
+        # Se clicar tecla "y"o cubo vai rotacionar em torno do eixo y
+        elif rotacao_direcao == "y":
+            Tz = np.array([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, d], [0, 0, 0, 1]])
+            M = Tc @ pinhole @ Tz @ r @ y
+        
+        # Se clicar tecla "z"o cubo vai rotacionar em torno do eixo z
+        elif rotacao_direcao == "z":
+            Tz = np.array([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, d], [0, 0, 0, 1]])
+            M = Tc @ pinhole @ Tz @ r @ z
+
+        # Se clicar tecla "r"o cubo vai rotacionar em torno de todos os eixos
+        elif rotacao_direcao == "r":
+            Tz = np.array([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, d], [0, 0, 0, 1]])
+            M = Tc @ pinhole  @ Tz @ r   
         cubo_final = M @ cubo
 
+    # tela fica preta
     screen.fill((0, 0, 0))
 
     # Criar linhas que ligam os pontos do cubo -> Ao fazer a divisão, transforma o XpWp em Xp e/ou YpWp em Yp
