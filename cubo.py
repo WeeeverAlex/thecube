@@ -151,7 +151,7 @@ while main:
     # tela fica preta
     screen.fill((0, 0, 0))
 
-    # Criar linhas que ligam os pontos do cubo -> Ao fazer a divisão, transforma o XpWp em Xp e/ou YpWp em Yp
+    # Cria linhas que ligam os pontos do cubo, transforma o XpWp em Xp e/ou YpWp em Yp
     pygame.draw.line(screen, cor, (cubo_final[0, 0]/cubo_final[3, 0], cubo_final[1, 0]/cubo_final[3, 0]), (cubo_final[0, 1]/cubo_final[3, 1], cubo_final[1, 1]/cubo_final[3, 1]), 3)
     pygame.draw.line(screen, cor, (cubo_final[0, 1]/cubo_final[3, 1], cubo_final[1, 1]/cubo_final[3, 1]), (cubo_final[0, 2]/cubo_final[3, 2], cubo_final[1, 2]/cubo_final[3, 2]), 3)
     pygame.draw.line(screen, cor, (cubo_final[0, 2]/cubo_final[3, 2], cubo_final[1, 2]/cubo_final[3, 2]), (cubo_final[0, 3]/cubo_final[3, 3], cubo_final[1, 3]/cubo_final[3, 3]), 3)
@@ -165,8 +165,7 @@ while main:
     pygame.draw.line(screen, cor, (cubo_final[0, 2]/cubo_final[3, 2], cubo_final[1, 2]/cubo_final[3, 2]), (cubo_final[0, 6]/cubo_final[3, 6], cubo_final[1, 6]/cubo_final[3, 6]), 3)
     pygame.draw.line(screen, cor, (cubo_final[0, 3]/cubo_final[3, 3], cubo_final[1, 3]/cubo_final[3, 3]), (cubo_final[0, 7]/cubo_final[3, 7], cubo_final[1, 7]/cubo_final[3, 7]), 3)
     
-    
-    clock.tick(60)
+    # Atualiza a tela
     pygame.display.update()
 
 pygame.quit()
