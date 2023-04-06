@@ -217,7 +217,7 @@ O projeto possui as seguintes funcionalidades:
 
 ## Resultado final
 
-![Resultado final](cubo.gif)
+![Resultado final](cubo2.gif)
 
 
 

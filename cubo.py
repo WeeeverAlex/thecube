@@ -22,7 +22,7 @@ FPS = 60  # Frames pOr Second
 d = 400
 
 # Cor do cubo
-cor = (0,0 , 100)
+cor = (0,0 , 255)
 
 # Criando a matriz que representa o cubo em três dimensões
 cubo = np.array([[-100, -100, -100, 1], [100, -100, -100, 1], [100, 100, -100, 1], [-100, 100, -100, 1], [-100, -100, 100, 1], [100, -100, 100, 1], [100, 100, 100, 1], [-100, 100, 100, 1]]).T
