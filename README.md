@@ -39,9 +39,8 @@ $$
 x_p\\
 y_p\\
 z_p
-\end{bmatrix}
-=
-M_t @ 
+\end{bmatrix} =
+M_t 
 \begin{bmatrix}
 x_o\\
 y_o\\
@@ -52,8 +51,7 @@ $$
 Portanto, podemos escrever a matriz de transformação linear como:
 
 $$
-M_t 
-=
+M_t = 
 \begin{bmatrix}
 0 & 0 & -d\\
 0 & 1 & 0\\
