@@ -235,20 +235,36 @@ Por fim, é chamado o método pygame.draw.line() para desenhar as 12 arestas do 
 pygame.draw.line(screen, cor, (cubo_final[0, 0]/cubo_final[3, 0], cubo_final[1, 0]/cubo_final[3, 0]), (cubo_final[0, 1]/cubo_final[3, 1], cubo_final[1, 1]/cubo_final[3, 1]), 3)
 ```
 
-
-
 ## Como rodar o projeto e Funcionalidades
 
-Para rodar o projeto, basta executar o arquivo cubo.py. O projeto foi feito em Python e utiliza as bibliotecas pygame e numpy.
+O projeto foi feito em Python e utiliza as bibliotecas `pygame` e `numpy`.
+
+### Clone o repositório do nosso projeto:
+
+```py
+https://github.com/WeeeverAlex/thecube
+```
+
+### Depois instale os requirements:
+
+```py
+pip install -r requirements.txt
+```
+
+## Por fim, basta executar o arquivo cubo.py: 
+
+```py
+python main.py
+```
 
 O projeto possui as seguintes funcionalidades:
 
-- Rotação do cubo em torno do eixo x caso o usuário aperte a tecla 'x'
-- Rotação do cubo em torno do eixo y caso o usuário aperte a tecla 'y'
-- Rotação do cubo em torno do eixo z caso o usuário aperte a tecla 'z'
-- Rotação do cubo nos três eixos caso o usuário aperte a tecla 'r'
-- Aumento da distância focal caso o usuário aperte a tecla 's'
-- Diminuição da distância focal caso o usuário aperte a tecla 'w'
+- Rotação do cubo em torno do eixo x caso o usuário aperte a tecla `x` 
+- Rotação do cubo em torno do eixo y caso o usuário aperte a tecla `y`
+- Rotação do cubo em torno do eixo z caso o usuário aperte a tecla `z`
+- Rotação do cubo nos três eixos caso o usuário aperte a tecla `r`
+- Aumento da distância focal caso o usuário aperte a tecla `s`
+- Diminuição da distância focal caso o usuário aperte a tecla `w`
 
 ## Resultado final
 
