@@ -201,33 +201,23 @@ Em 3D, é possível rotacionar pontos ao redor de cada um dos eixos usando as ma
 
 Uma projeção de 3D para 2D funciona de uma maneira muito parecida com a projeção de 2D para 1D que fizemos na aula. Uma boa ideia é imaginar um mundo 3D com dimensões X, Y, Z, de tal forma que o *pinhole* fica no ponto $[0,0,0]$ e o anteparo fica no plano $z=-d$.
 
-### Como modelar e posicionar um cubo
 
+## Como rodar o projeto e Funcionalidades
 
+Para rodar o projeto, basta executar o arquivo cubo.py. O projeto foi feito em Python e utiliza as bibliotecas pygame e numpy.
 
+O projeto possui as seguintes funcionalidades:
 
-### Rotações em direções arbitrárias
+- Rotação do cubo em torno do eixo x caso o usuário aperte a tecla 'x'
+- Rotação do cubo em torno do eixo y caso o usuário aperte a tecla 'y'
+- Rotação do cubo em torno do eixo z caso o usuário aperte a tecla 'z'
+- Rotação do cubo nos três eixos caso o usuário aperte a tecla 'r'
+- Aumento da distância focal caso o usuário aperte a tecla 's'
+- Diminuição da distância focal caso o usuário aperte a tecla 'w'
 
-Em 3D, é possível rotacionar pontos ao redor de cada um dos eixos usando as matrizes:
+## Resultado final
 
-
-
-
-
-### Funcao 
-
-### Funcao 
-
-
-## Como rodar o projeto
-
-
-
-
-
-
-    
-## Prévia
+![Resultado final](cubo.gif)
 
 
 
