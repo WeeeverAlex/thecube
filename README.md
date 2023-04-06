@@ -2,12 +2,11 @@
 
 Esse é um projeto da matéria de Algebra Linear e Teoria da Informação do Insper para o curso de Ciência da Computação
 
+# Projeto: a projeção 3D de um cubo
+Neste projeto, utilizamos a biblioteca `pygame`, usando a função `pygame.draw.line` para desenhar as linhas na tela. Ademais, as transformações foram implementadas manualmente.
+
 ## Descrição do Projeto
 O projeto consiste em fazer a implementação da projeção de um mundo 3D em uma tela 2D usando o algoritmo da pinhole camera. No qual o objetivo deste projeto é fazer uma projeção em tempo real de um cubo em *wireframe* que gira em todas as direções das três dimensões.
-
-# Projeto: a projeção 3D de um cubo
-
-Neste projeto, utilizamos a biblioteca `pygame`, usando a função `pygame.draw.line` para desenhar as linhas na tela. Ademais, as transformações foram implementadas manualmente.
 
 ## Descrição Matemática 
 
@@ -174,6 +173,17 @@ r = x @ y @ z
 ```
 
 Caso o usuário queira que o cubo rotacione no eixo x, a matriz rotação será incrementada da seguinte forma :
+
+```py
+r = r @ x
+```
+
+Além disso, caso o usuário queira que o cubo rotacione no eixo y, a matriz rotação será incrementada da seguinte forma :
+
+```py
+r = r @ y
+```
+E por fim, caso o usuário queira que o cubo rotacione no eixo z, a matriz rotação será incrementada da seguinte forma :
 
 ```py
 r = r @ x
