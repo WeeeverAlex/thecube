@@ -41,7 +41,7 @@ y_p\\
 z_p
 \end{bmatrix}
 =
-{Matriz_{transformação}}
+M_t @ 
 \begin{bmatrix}
 x_o\\
 y_o\\
@@ -52,7 +52,7 @@ $$
 Portanto, podemos escrever a matriz de transformação linear como:
 
 $$
-{Matriz_{transformação}} 
+M_t 
 =
 \begin{bmatrix}
 0 & 0 & -d\\
