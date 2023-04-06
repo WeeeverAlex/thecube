@@ -110,7 +110,25 @@ $$
 
 ## IMPLEMENTAÇÃO
 
--Primeiramente, nós definimos um array através da biblioteca numpy representando todos os pontos do cubo, sendo do tipo: 
+-Primeiramente nós definimos um array através da biblioteca numpy representando todos os pontos do cubo, onde cada coluna é um vértice do cubo e a linhas representam as dimensões x,y,z de cada vértice, respectivamente. O array representa o cubo nas três dimensões com arestas paralelas aos eixos x, y e z, cujos vértices estão localizados nos seguintes pontos:
+
+-(-100, -100, -100): canto inferior esquerdo da face frontal
+
+-(100, -100, -100): canto inferior direito da face frontal
+
+-(100, 100, -100): canto superior direito da face frontal
+
+-(-100, 100, -100): canto superior esquerdo da face frontal
+
+-(-100, -100, 100): canto inferior esquerdo da face traseira
+
+-(100, -100, 100): canto inferior direito da face traseira
+
+-(100, 100, 100): canto superior direito da face traseira
+
+-(-100, 100, 100): canto superior esquerdo da face traseira: 
+
+ou seja, a matriz: 
 
 $$
 \begin{bmatrix}
@@ -148,14 +166,20 @@ R_z = \begin{bmatrix}
 \end{bmatrix}
 $$
 
--É definida uma matriz de rotação total, que é o resultado da multiplicação das três matrizes de rotação, essa matriz é incrementada dependendo do input do usuário (se ele quer que o cubo gire no eixo x,y ou z):
+-É definida uma matriz de rotação total, que é o resultado da multiplicação das três matrizes de rotação, essa matriz é incrementada através de multiplicação matricial dependendo do input do usuário (se ele quer que o cubo gire no eixo x,y ou z):
 
 ```py
 # Matriz de rotação total
 r = x @ y @ z
 ```
 
--É definida uma matriz de translação no eixo z, para que a visualização do cubo seja "de fora", como se estivéssemos vendo o cubo em terceira pessoa: 
+Caso o usuário queira que o cubo rotacione no eixo x, a matriz rotação será incrementada da seguinte forma :
+
+```py
+r = r @ x
+```
+
+-É definida uma matriz de translação no eixo z, para que a visualização do cubo seja "de fora" da câmera, para isso, o cubo é transladado uma distância $d$ no eixo z. 
 
 $$
 \begin{bmatrix}
@@ -187,6 +211,11 @@ M = Tc @ pinhole  @ Tz @ r
 cubo_final = M @ cubo
 ```
 
+Observação :
+
+Essa sequencia de multiplicação matricial para chegar na matriz de transformação total é feita da maneira que, o cubo seja primeiramente rotacionado em algum ou todos os eixos, lembrando que para isso ele deve estar na coordendada $(0,0,0)$. Após isso o cubo é transladado no eixo z para que possa ser visto de fora da câmera, após isso é feita a multiplicação matricial pela matriz de projeção pinhole, e por fim o cubo é transladado ao centro da tela pela matriz $T_c$.
+
+
 Por fim, é chamado o método pygame.draw.line() para desenhar as 12 arestas do cubo:
 
 -Para desenhar cada linha, as coordenadas dos dois vértices que a linha conecta são divididas pelas suas coordenadas homogêneas (o último elemento da coluna correspondente) para obter as coordenadas normalizadas em relação ao plano de projeção. Essas coordenadas normalizadas são então usadas como argumentos para a função pygame.draw.line() para desenhar a linha.
@@ -196,14 +225,6 @@ Por fim, é chamado o método pygame.draw.line() para desenhar as 12 arestas do 
 pygame.draw.line(screen, cor, (cubo_final[0, 0]/cubo_final[3, 0], cubo_final[1, 0]/cubo_final[3, 0]), (cubo_final[0, 1]/cubo_final[3, 1], cubo_final[1, 1]/cubo_final[3, 1]), 3)
 ```
 
-
-### Rotações em direções arbitrárias
-
-Em 3D, é possível rotacionar pontos ao redor de cada um dos eixos usando as matrizes:
-
-### Projeções 3D
-
-Uma projeção de 3D para 2D funciona de uma maneira muito parecida com a projeção de 2D para 1D que fizemos na aula. Uma boa ideia é imaginar um mundo 3D com dimensões X, Y, Z, de tal forma que o *pinhole* fica no ponto $[0,0,0]$ e o anteparo fica no plano $z=-d$.
 
 
 ## Como rodar o projeto e Funcionalidades
