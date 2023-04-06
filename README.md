@@ -12,18 +12,21 @@ Neste projeto, utilizamos a biblioteca `pygame`, usando a função `pygame.draw.
 ## Descrição Matemática 
 
 O modelo matemático utilizado para o desenvolvimento do projeto foi baseado no experimento da câmera pinhole, que consiste em mostrar de maneira simples como as imagens são formadas. Geometricamente, nós conseguimos representar esse experimento em um plano cartesiano $x,y$, como na imagem abaixo:
+
+
 <img src="pinhole.png">
 
 Já que estamos tratando de um plano de duas dimensões, o vetor de coordenadas é do tipo :
+
 $$
 \begin{bmatrix}
-x_O\\
-y_O\\
+x_o\\
+y_o\\
 1
 \end{bmatrix}
 $$
 
-Na imagem, conseguimos visualizar o objeto, na coordenada $[x_o,y_o]$, o pinhole, que no exemplo está na coordenada $[0,0]$ e a imagem projetada, que se situa na coordenada $[x_p,y_p]$. Já que queremos encontrar o ponto $[x_p,y_p]$, podemos utilizar a seguinte dedução:
+Na imagem, conseguimos visualizar o objeto na coordenada $[x_o,y_o]$, o pinhole que está na coordenada $[0,0]$ e a imagem projetada, que se situa na coordenada $[x_p,y_p]$. Já que queremos encontrar o ponto $[x_p,y_p]$, podemos utilizar a seguinte dedução:
 
 - A distância entre a imagem projetada e o pinhole é $d$ (distância focal), então podemos concluir que $x_p=-d$.
 
@@ -34,13 +37,13 @@ $$
 \frac{y_p}{x_p} = \frac{y_o}{x_o}
 $$
 
-Logo, podemos encontrar a coordenada $Y_p$ substituindo $x_p$ por $-d$:
+Logo, podemos substituir $x_p$ por $-d$ e encontrar a igualdade da coordenada $Y_p$:
 
 $$
 Y_p = \frac{y_o}{x_o}(-d)
 $$
 
-Como queremos fazer transformações matriciais para a projeção, nós precisamos converter as coordenadas dos pontos em coordenadas homogêneas. Para isso, basta adicionar uma variável auxiliar, no exemplo vamos utilizar a variável $$w_p$$, de tal forma que :
+Como queremos fazer transformações matriciais para a projeção, nós precisamos converter as coordenadas dos pontos em coordenadas homogêneas. Para isso, basta adicionar uma variável auxiliar, no exemplo vamos utilizar a variável $w_p$, de tal forma que :
 
 $$ x_p w_p = x_o $$
 
@@ -52,7 +55,7 @@ x_p * w_p\\
 y_p\\
 w_p
 \end{bmatrix} =
-M_t 
+M_t
 \begin{bmatrix}
 x_o\\
 y_o\\
@@ -72,11 +75,12 @@ M_t =
 $$
 
 Aplicar essa teoria em um plano tridimensional não é muito diferente, precisamos definir o pinhole no ponto $[0,0,0]$, já que agora nós estamos nos referindo em um plano de três dimensões, o vetor de coordenadas é do tipo :
+
 $$
 \begin{bmatrix}
-x\\
-y\\
-z\\
+x_o\\
+y_o\\
+z_o\\
 1
 \end{bmatrix}
 $$
@@ -117,7 +121,7 @@ $$
 \end{bmatrix}
 $$
 
--Após isso, criamos uma matriz de projeção pinhole que depende da distância focal $d$.
+-Após isso, criamos uma matriz de projeção pinhole que depende da distância focal $d$ (já foi mostrada anteriormente).
 
 -Definimos as matrizes de rotação para cada dimensão $x,y,z$ :
 
